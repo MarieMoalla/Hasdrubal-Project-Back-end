@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Hasdrubal__Project.Models
 {
@@ -13,6 +14,7 @@ namespace Hasdrubal__Project.Models
         public DateTime DateFin { get; set; }
 
         //foreign key
+        [JsonIgnore]
         public ICollection<Pret> Prets { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Hasdrubal__Project.Models
 {
@@ -15,7 +16,9 @@ namespace Hasdrubal__Project.Models
         public string TypeIntervention { get; set; }
         public string Materiaux { get; set; }
         //foreign key
+        [JsonIgnore]
         public virtual Oeuvre Oeuvre { get; set; }
+        public int OeuvreId { get; set; }
 
     }
 }

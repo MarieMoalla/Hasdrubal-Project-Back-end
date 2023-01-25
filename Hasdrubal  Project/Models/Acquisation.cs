@@ -25,6 +25,8 @@ namespace Hasdrubal__Project.Models
         public string CertificatAuthentication { get; set; }
 
         //foreign key
+        [JsonIgnore]
         public virtual Oeuvre Oeuvre { get; set; }
+        public int OeuvreId { get; set; }
     }
 }

@@ -33,17 +33,38 @@ namespace Hasdrubal__Project.Models
         public string Description { get; set; }
 
         //foreign keys 
+        [JsonIgnore]
         public Artiste Artiste { get; set; }
         public int ArtisteId { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Image> Images { get; set; }
+        [JsonIgnore]
         public ICollection<Pret> Prets { get; set; }
 
+        [JsonIgnore]
         public Acquisation Acquisation { get; set; }
+        public int AcquisationId { get; set; }
+
+        [JsonIgnore]
         public Bibliographie Bibliographie { get; set; }
+        public int BibliographieId { get; set; }
+
+        [JsonIgnore]
         public ConservationLocation ConservationLocation { get; set; }
+        public int ConservationLocationId { get; set; }
+
+        [JsonIgnore]
         public Redaction Redaction { get; set; }
+        public int RedactionId { get; set; }
+
+        [JsonIgnore]
         public Restauration Restauration { get; set; }
+        public int RestaurationId { get; set; }
+
+        [JsonIgnore]
         public Signature Signature { get; set; }
-}
+        public int SignatureId { get; set; }
+
+    }
 }

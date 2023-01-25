@@ -4,14 +4,16 @@ using Hasdrubal__Project.DBConnection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Hasdrubal__Project.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230125164030_add-fullname-to-artiste")]
+    partial class addfullnametoartiste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,9 +36,6 @@ namespace Hasdrubal__Project.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("MoyenAcq")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OeuvreId")
                         .HasColumnType("int");
 
                     b.Property<string>("PreuveAchat")
@@ -94,9 +93,6 @@ namespace Hasdrubal__Project.Migrations
                     b.Property<string>("NomAuteur")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OeuvreId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Page")
                         .HasColumnType("int");
 
@@ -120,9 +116,6 @@ namespace Hasdrubal__Project.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ModeStockage")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OeuvreId")
                         .HasColumnType("int");
 
                     b.Property<string>("PlaceDepot")
@@ -190,16 +183,7 @@ namespace Hasdrubal__Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AcquisationId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ArtisteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BibliographieId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ConservationLocationId")
                         .HasColumnType("int");
 
                     b.Property<int>("DateCreation")
@@ -231,15 +215,6 @@ namespace Hasdrubal__Project.Migrations
 
                     b.Property<string>("PresnomArtiste")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RedactionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RestaurationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SignatureId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Support")
                         .HasColumnType("nvarchar(max)");
@@ -305,9 +280,6 @@ namespace Hasdrubal__Project.Migrations
                     b.Property<string>("NomRedacteur")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OeuvreId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Redactions");
@@ -336,9 +308,6 @@ namespace Hasdrubal__Project.Migrations
                     b.Property<string>("NomRestauration")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OeuvreId")
-                        .HasColumnType("int");
-
                     b.Property<string>("TypeIntervention")
                         .HasColumnType("nvarchar(max)");
 
@@ -354,9 +323,6 @@ namespace Hasdrubal__Project.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OeuvreId")
-                        .HasColumnType("int");
 
                     b.Property<string>("OeuvreLocalisation")
                         .HasColumnType("nvarchar(max)");
