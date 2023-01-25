@@ -1,4 +1,5 @@
 using Hasdrubal__Project.DBConnection;
+using Hasdrubal__Project.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,16 @@ namespace Hasdrubal__Project
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDbContext<UserDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             #endregion
+
+            #region Inject BlobStorageService
+            // configure DI for application services   
+            services.AddScoped<IStorageService, StorageService>();
+            services.AddScoped<IImagesService, ImagesService>();
+            #endregion
+
+            #region Cors Config 
+            services.AddCors(opts => opts.AddPolicy("AllowAny", b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +53,9 @@ namespace Hasdrubal__Project
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hasdrubal__Project v1"));
             }
+
+            string[] origins = new string[] { "http://localhost:4200" };
+            app.UseCors(builder => builder.WithOrigins(origins).AllowAnyHeader().AllowAnyMethod());
 
             app.UseHttpsRedirection();
 

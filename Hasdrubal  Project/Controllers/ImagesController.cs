@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Hasdrubal__Project.DBConnection;
 using Hasdrubal__Project.Models;
+using Hasdrubal__Project.Services;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
+using Image = Hasdrubal__Project.Models.Image;
 
 namespace Hasdrubal__Project.Controllers
 {
@@ -15,19 +19,55 @@ namespace Hasdrubal__Project.Controllers
     public class ImagesController : ControllerBase
     {
         private readonly AppDBContext _context;
-
-        public ImagesController(AppDBContext context)
+        private readonly IStorageService _blobService;
+        private readonly IImagesService _imageService;
+        public ImagesController(IStorageService blobService, AppDBContext context, IImagesService imageService)
         {
             _context = context;
+            _blobService = blobService;
+            _imageService = imageService;
         }
 
-        // GET: api/Images
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Image>>> GetImages()
+        #region Upload UserPics
+        [HttpPost("api/UploadPictures")]
+        public async Task<IActionResult> UploadPictures(IFormFile file, int oeuvreId)
         {
-            return await _context.Images.ToListAsync();
-        }
+            if (file != null)
+            {
+                string resUrl = "";
+                string name = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                using (var stream = file.OpenReadStream())
+                {
+                    resUrl = await _blobService.UploadBinary(name,stream);
+                }
+                Image image = new Image();
+                image.name= name;
+                image.OeuvreId=oeuvreId;
+                _context.Images.Add(image);
+                await _context.SaveChangesAsync();
 
+                return CreatedAtAction("GetImage", new { id = image.Id }, image);
+            }
+            return BadRequest("File is null...");
+        }
+        #endregion
+
+        #region GetImagesByOeuvre
+        [HttpGet("api/GetImagesByOeuvre")]
+        public async Task<ActionResult> GetImagesByOeuvre(int id)
+        {
+            List<string> imagesNames = await _imageService.GetImagesnameByOeuvreAsync(id);
+            var res = new List<Uri>();
+        
+            foreach(var name in imagesNames) 
+            {
+               res.Add(await _blobService.DownloadBlobToLocalStorage(name));
+            }
+            return Ok(res);
+        }
+        #endregion
+
+        #region other crud
         // GET: api/Images/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Image>> GetImage(int id)
@@ -99,7 +139,7 @@ namespace Hasdrubal__Project.Controllers
 
             return NoContent();
         }
-
+        #endregion
         private bool ImageExists(int id)
         {
             return _context.Images.Any(e => e.Id == id);

@@ -84,6 +84,18 @@ namespace Hasdrubal__Project.Controllers
             return CreatedAtAction("GetArtiste", new { id = artiste.Id }, artiste);
         }
 
+        [HttpPost("PostArtistes")]
+        public async Task<ActionResult> PostArtistes(ICollection<Artiste> artistes)
+        {
+            foreach(Artiste artiste in artistes) 
+            {
+                _context.Artistes.Add(artiste);
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok("creation succeeded!");
+        }
+
         // DELETE: api/Artistes/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteArtiste(int id)
