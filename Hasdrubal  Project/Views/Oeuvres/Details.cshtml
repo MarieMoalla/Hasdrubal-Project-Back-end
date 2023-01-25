@@ -1,0 +1,102 @@
+﻿@model Hasdrubal__Project.Models.Oeuvre
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Oeuvre</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomArtiste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomArtiste)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PresnomArtiste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PresnomArtiste)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateCreation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateCreation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Materiaux)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Materiaux)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Support)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Support)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dimensions2D)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dimensions2D)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dimensions3D)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dimensions3D)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Poid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Poid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NbElements)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NbElements)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumeroTitrage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumeroTitrage)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeTitrage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TypeTitrage)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Artiste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Artiste.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

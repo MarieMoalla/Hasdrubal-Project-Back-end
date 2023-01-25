@@ -1,0 +1,48 @@
+﻿@model Hasdrubal__Project.Models.Exposition
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Exposition</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Contraintes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Contraintes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TitreExpo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TitreExpo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lieu)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lieu)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateDebut)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateDebut)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateFin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateFin)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

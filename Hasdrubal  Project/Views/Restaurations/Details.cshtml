@@ -1,0 +1,66 @@
+﻿@model Hasdrubal__Project.Models.Restauration
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Restauration</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Constat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Constat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cause)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cause)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateRestauration)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateRestauration)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LieuRestauration)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LieuRestauration)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomRestauration)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomRestauration)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeIntervention)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TypeIntervention)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Materiaux)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Materiaux)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Oeuvre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Oeuvre.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
